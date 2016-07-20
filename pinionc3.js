@@ -135,39 +135,40 @@ moneyText = function(tablicaSlownik) {
 
     //plny
     for (var i = 0; i < muchPln; i += 3) {
-
-        if (arrPln[muchPln - 1] == 0 || arrPln[muchPln - 1] >= 5 || (muchPln != 1 && arrPln[muchPln - 1] == 1)) { //zlotych
+        var sum = "";
+        var newArr = arrPln.slice(muchPln - 3 - i, muchPln - i);
+        if (newArr[2] == 0 || newArr[2] >= 5 || (newArr.length != 1 && newArr[2] == 1)) { //zlotych
             plnTxt = zloty[2][1];
         }
-        if (muchPln == 1 && arrPln[muchPln - 1] == 1) { //zloty
+        if (newArr.length == 1 && newArr[2] == 1) { //zloty
             plnTxt = zloty[0][1];
         }
-        if (arrPln[muchPln - 1] > 1 && arrPln[muchPln - 1] < 5) {
+        if (newArr[2] > 1 && newArr[2] < 5) {
             plnTxt = zloty[1][1]; //zlote
         }
 
 
-        if (muchPln == 3) {
-            if (arrPln[muchPln - 2] !== 1) {
-                sumPln = hundreds[arrPln[muchPln - 3]][1] + " " + decimals[arrPln[muchPln - 2]][1] + " " + units[arrPln[muchPln - 1]][1] + " " + plnTxt;
+        if (newArr.length == 3) {
+            if (newArr[0] !== 1) {
+                sumPln = hundreds[newArr[0]][1] + " " + decimals[newArr[0]][1] + " " + units[newArr[2]][1] + " " + plnTxt;
             }
-            if (arrPln[muchPln - 2] == 1) { //nascie zlotych
-                sumPln = hundreds[arrPln[muchPln - 3]][1] + " " + tens[arrPln[muchPln - 1]][1] + " " + zloty[2][1];
+            if (newArr[0] == 1) { //nascie zlotych
+                sumPln = hundreds[newArr[0]][1] + " " + tens[newArr[2]][1] + " " + zloty[2][1];
             }
         }
 
-        if (muchPln == 2) {
-            if (arrPln[muchPln - 2] !== 1) {
-                sumPln = decimals[arrPln[muchPln - 2]][1] + " " + units[arrPln[muchPln - 1]][1] + " " + plnTxt;
+        if (newArr.length == 2) {
+            if (newArr[0] !== 1) {
+                sumPln = decimals[newArr[0]][1] + " " + units[newArr[2]][1] + " " + plnTxt;
             }
-            if (arrPln[muchPln - 2] == 1) { //nascie zlotych
-                sumPln = tens[arrPln[muchPln - 1]][1] + " " + zloty[2][1];
+            if (newArr[0] == 1) { //nascie zlotych
+                sumPln = tens[newArr[2]][1] + " " + zloty[2][1];
             }
         }
-        if (muchPln == 1) {
-            sumPln = units[arrPln[muchPln - 1]][1] + " " + plnTxt;
+        if (newArr.length == 1) {
+            sumPln = units[newArr[2]][1] + " " + plnTxt;
         }
-        if (muchPln == 0 || (muchPln == 1 && arrPln[muchPln - 1] == 0) || (muchPln == 2 && arrPln[0] == 0 && arrPln[1] == 0)) { //jesli nie podano zlotych
+        if (newArr.length == 0 || (newArr.length == 1 && newArr[2] == 0) || (newArr.length == 2 && newArr[0] == 0 && arrPln[1] == 0)) { //jesli nie podano zlotych
             sumPln = "";
             plnTxt = "";
         }
@@ -175,8 +176,9 @@ moneyText = function(tablicaSlownik) {
         //  sumPln = hundreds[[muchPln - 3]][1] + " " + decimals[[muchPln - 2]][1] + " " + units[arrPln[muchPln - 1]][1] + " " + plnTxt;
         // arrPln = arrPln.slice(muchPln - 3, muchPln);
         console.log(arrPln.slice(muchPln - 3 - i, muchPln - i));
-        // return sumPln + " " + sumGr;
-
+        sum += sumPln;
+            //return sumPln[i] + " " + sumGr;
 
     }
+    return sum + " " + sumGr;
 };
