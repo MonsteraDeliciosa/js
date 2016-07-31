@@ -91,7 +91,7 @@ var grosz = [
 //
 // }
 
-moneyText = function(tablicaSlownik) {
+moneyText = function() {
     'use strict';
     var value = prompt("Podaj kwotę", "");
 
@@ -137,6 +137,11 @@ moneyText = function(tablicaSlownik) {
     for (var i = 0; i < muchPln; i += 3) {
         var sum = "";
         var newArr = arrPln.slice(muchPln - 3 - i, muchPln - i);
+
+        if (arrPln < 3) {
+
+        }
+
         if (newArr[2] == 0 || newArr[2] >= 5 || (newArr.length != 1 && newArr[2] == 1)) { //zlotych
             plnTxt = zloty[2][1];
         }
@@ -176,11 +181,14 @@ moneyText = function(tablicaSlownik) {
         //  sumPln = hundreds[[muchPln - 3]][1] + " " + decimals[[muchPln - 2]][1] + " " + units[arrPln[muchPln - 1]][1] + " " + plnTxt;
         // arrPln = arrPln.slice(muchPln - 3, muchPln);
         console.log(arrPln.slice(muchPln - 3 - i, muchPln - i));
-        sum += sumPln;
+
+        sum += sumPln; // !! doklej przeltumaczonego stringa do istniejącego wyrazenia
+        // a moze zaczynac rozbierać array od konca?
+        console.log(sum);
             //return sumPln[i] + " " + sumGr;
 
     }
     return sum + " " + sumGr;
 };
-
+// coś się jebie w dziesiątkach!
 // zamiana pozycji 0-2 w newArr na liczone od konca? jesli
