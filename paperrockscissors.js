@@ -13,6 +13,10 @@ if (skynetChoice <= 3 && skynetChoice > 2) {
   var computerChoice = "scissors";
 }
 
+letsPlay = function() {
+  //
+}
+
 switch(skynetChoice) {
   case
 }
