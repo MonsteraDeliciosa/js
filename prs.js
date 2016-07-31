@@ -34,3 +34,4 @@ function letsPlay(userChoice, computerChoice) {
         }
     }
 };
+letsPlay();

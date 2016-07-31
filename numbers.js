@@ -49,3 +49,30 @@ primeFactor = function() {
         }
     }
 };
+
+// Find Cost of Tile to Cover W x H Floor - Calculate the total cost of tile it would take to cover a floor plan of width and height, using a cost entered by the user.
+
+calculateTile = function(width, height) {
+  var cost = prompt("enter cost per sq meter", "");
+
+  return (cost * width * height) + " dollars";
+}
+
+//Change Return Program - The user enters a cost and then the amount of money given. The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change.
+
+changeReturn = function() {
+  var cost = prompt("enter cost", "");
+  var total = prompt("how much money did you give?", "");
+  var diff = total - cost;
+
+  
+
+  // var money = {
+  //   50: "50 groszy",
+  //   20: "20 groszy",
+  //   10: "10 groszy",
+  //   5: "5 groszy",
+  //   2: "2 grosze",
+  //   1: "1 grosz"
+  // }
+}
